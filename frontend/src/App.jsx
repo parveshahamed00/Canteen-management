@@ -1,10 +1,12 @@
-import LoginPage from "./components/pages/LoginPage"
+import LoginPage from "./components/pages/Admin/LoginPage"
+import Sidebar from "./components/pages/Admin/Sidebar"
 
 function App() {
 
   return (
     <>
-    <LoginPage></LoginPage>
+    {/* <LoginPage></LoginPage> */}
+    <Sidebar></Sidebar>
     </>
   )
 }
