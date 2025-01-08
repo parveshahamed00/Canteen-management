@@ -8,8 +8,7 @@ import { Link } from "react-router-dom";
 const Sidebar = () => {
   return (
     <div className="h-screen  bg-green-500 	w-44 text-white flex flex-col items-center p-4 space-y-6">
-      {/* TODO: make cursive font */}
-      <div className="text-lg font-logoFont font-semibold  mb-8 text-center  ">
+      <div className="text-lg font-logoFont font-extrabold  mb-8 text-center  ">
         SAC SNACKS WALLET
       </div>
 

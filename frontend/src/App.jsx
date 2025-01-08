@@ -12,7 +12,7 @@ function App() {
     <div>
       <Routes>
 
-        {/* TODO: setup the remaining admin's dashboard route */}
+        {/* TODO: connect sql and start to implement jwt auth*/}
         <Route path="/admin" element={<LoginPage></LoginPage>}></Route>
         <Route
           path="/admin/dashboard/sales"
