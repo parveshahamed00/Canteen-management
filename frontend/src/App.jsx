@@ -8,6 +8,7 @@ import Items from "./components/Admin/Items";
 import Sales from "./components/Admin/Sales";
 import ProtectedRoute from "./components/Admin/ProtectedRoute"; // Import the ProtectedRoute component
 import AddCaterer from "./components/Admin/AddCaterer";
+import CatererList from "./components/Admin/CatererList";
 
 function App() {
   // TODO: create student auth
@@ -22,6 +23,8 @@ function App() {
           <Route path="/admin/dashboard/caterer" element={<Caterer />} />
           <Route path="/admin/dashboard/items" element={<Items />} />
           <Route path="/admin/dashboard/addCaterer" element={<AddCaterer/>} />
+          <Route path="/admin/dashboard/catererList" element={<CatererList></CatererList>} />
+
         </Route>
         {/* 404 Error Page */}
         <Route path="*" element={<Error404 />} />

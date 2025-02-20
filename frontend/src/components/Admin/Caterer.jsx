@@ -37,12 +37,15 @@ export default function Caterer() {
             View the total number of caterers.
           </p>
         </div>
+        <Link to="/admin/dashboard/catererList">
+
         <div className="px-6 pt-4 pb-2">
           <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded flex items-center justify-center">
             <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5s8.268 2.943 9.542 7-2.943 9.057-7.943 9.542-9.057-2.943-9.542-7.943z"></path></svg>
             View Total
           </button>
         </div>
+        </Link>
       </div>
     </div>
        </div>

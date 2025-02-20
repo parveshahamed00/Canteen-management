@@ -26,8 +26,8 @@ export default function AddCaterer() {
         console.error("Request failed:", error.response ? error.response.data : error);
         toast.error(error.response?.data?.message || "Error adding caterer");
     }
-    
-       
+    setCatererName("")
+    setCatererId("")
   };
   return (
     <div className="flex">
