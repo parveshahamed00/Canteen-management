@@ -2,8 +2,8 @@
 
 export default function Error404() {
   return (
-    <div className="text-center">
-    <h1 className="mb-4 text-6xl font-semibold text-red-500">404</h1>
+    <div className="text-center pt-5">
+    <h1 className="my-6 text-6xl font-semibold text-red-500">404</h1>
     <p className="mb-4 text-lg text-gray-600">Oops! Looks like you're lost.</p>
     <div className="animate-bounce">
       <svg className="mx-auto h-16 w-16 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -11,6 +11,5 @@ export default function Error404() {
       </svg>
     </div>
     <p className="mt-4 text-gray-600">Let's get you back <a href="/" className="text-blue-500">home</a>.</p>
-  </div>
-  )
+  </div>  )
 }

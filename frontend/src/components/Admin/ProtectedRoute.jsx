@@ -5,7 +5,7 @@ const ProtectedRoute = () => {
 
   // If token exists, allow access to the nested routes
   // Otherwise, redirect to the login page
-  return token ? <Outlet /> : <Navigate to="/admin" />;
+  return token ? <Outlet />:<Navigate to="/admin" />;
 };
 
 export default ProtectedRoute;

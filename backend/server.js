@@ -3,8 +3,8 @@ const path = require("path");
 const cors = require("cors");
 const dbConnection = require("./db");
 const adminAuth = require("./routes/Admin/adminLogin");
-const adminAuthMiddleware = require("./middleware/adminJwtAuth");
-
+// const adminAuthMiddleware = require("./middleware/adminJwtAuth");
+const addCaterer=require("./routes/Admin/addCaterer")
 const app = express();
 const port = 3000;
 
@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname, "public"))); // Serve static files
 
 // Routes
 app.use("/admin", adminAuth); // Admin authentication routes
-
+app.use("/admin/dashboard/addCaterer", addCaterer);// Admin Adding caterer
 // Database connection
 dbConnection.connect((err) => {
   if (err) {
