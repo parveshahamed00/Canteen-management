@@ -3,14 +3,11 @@ const path = require("path");
 const cors = require("cors");
 const dbConnection = require("./db");
 const adminAuth = require("./routes/Admin/adminLogin");
-// const adminAuthMiddleware = require("./middleware/adminJwtAuth");
 const addCaterer = require("./routes/Admin/addCaterer");
 const catererList = require("./routes/Admin/catererList");
 const deleteCaterer = require("./routes/Admin/deleteCaterer");
-
 const app = express();
 const port = 3000;
-
 // Middleware
 app.use(cors()); // Allow all origins
 app.use(express.json()); // Parse JSON requests
@@ -40,13 +37,11 @@ dbConnection.connect((err) => {
     });
   }
 });
-
 // Global error handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).sendFile(path.join(__dirname, "public", "error.html"));
 });
-
 // Start server
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
