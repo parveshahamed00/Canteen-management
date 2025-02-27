@@ -6,6 +6,7 @@ const adminAuth = require("./routes/Admin/adminLogin");
 const addCaterer = require("./routes/Admin/addCaterer");
 const catererList = require("./routes/Admin/catererList");
 const deleteCaterer = require("./routes/Admin/deleteCaterer");
+const addFoodItems=require("./routes/Admin/addFoodItems")
 const app = express();
 const port = 3000;
 // Middleware
@@ -16,9 +17,9 @@ app.use(express.static(path.join(__dirname, "public"))); // Serve static files
 // Routes
 app.use("/admin", adminAuth); // Admin authentication routes
 app.use("/admin/dashboard/addCaterer", addCaterer); // Admin Adding caterer
-app.use("/admin/dashboard/catererList", catererList);// Admin seeing caterer list
-app.use("/admin/dashboard/catererList",deleteCaterer)
-
+app.use("/admin/dashboard/catererList", catererList); // Admin seeing caterer list
+app.use("/admin/dashboard/catererList", deleteCaterer);
+app.use("/admin/dashboard/foodItems",addFoodItems)
 // Database connection
 dbConnection.connect((err) => {
   if (err) {

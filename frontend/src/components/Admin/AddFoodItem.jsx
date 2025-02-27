@@ -8,6 +8,7 @@ import Sidebar from "./Sidebar";
 const AddFoodItem = () => {
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState("");
+  const [price, setPrice] = useState("");
   const [date, setDate] = useState("");
   const [image, setImage] = useState(null);
 
@@ -16,11 +17,15 @@ const AddFoodItem = () => {
     const formData = new FormData();
     formData.append("name", name);
     formData.append("quantity", quantity);
+    formData.append("price", price);
     formData.append("date", date);
     if (image) {
       formData.append("image", image);
     }
-
+    //  logging form data
+    // formData.forEach((value, key) => {
+    //     console.log(`${key}: ${value}`);
+    //   });
     try {
       await axios.post(
         "http://localhost:3000/admin/dashboard/foodItems",
@@ -44,7 +49,7 @@ const AddFoodItem = () => {
 
   return (
     <div className="flex">
-<Sidebar></Sidebar>    
+      <Sidebar></Sidebar>
       <div className="container mx-auto p-4">
         <h1 className="text-2xl font-bold mb-4">Add Food Item</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -65,6 +70,18 @@ const AddFoodItem = () => {
               value={quantity}
               onChange={(e) => setQuantity(e.target.value)}
               className="border p-2 w-full"
+              min="1"
+              required
+            />
+          </div>
+          <div>
+            <label className="block">Price for 1 qt:</label>
+            <input
+              type="number"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+              className="border p-2 w-full"
+              min="1"
               required
             />
           </div>

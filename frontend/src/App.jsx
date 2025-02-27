@@ -9,7 +9,6 @@ import ProtectedRoute from "./components/Admin/ProtectedRoute"; // Import the Pr
 import AddCaterer from "./components/Admin/AddCaterer";
 import CatererList from "./components/Admin/CatererList";
 import AddFoodItem from "./components/Admin/AddFoodItem";
-
 function App() {
   // TODO: create student auth
   return (
