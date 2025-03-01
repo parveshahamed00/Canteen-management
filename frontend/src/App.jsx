@@ -9,14 +9,19 @@ import ProtectedRoute from "./components/Admin/ProtectedRoute"; // Import the Pr
 import AddCaterer from "./components/Admin/AddCaterer";
 import CatererList from "./components/Admin/CatererList";
 import AddFoodItem from "./components/Admin/AddFoodItem";
+import AuthPage from "./components/AuthPage";
+import SignUp from "./components/SignUp";
 function App() {
-  // TODO: create student auth
+  // TODO: create user login uing rollnumber and password
   return (
     <div>
       <Routes>
-        {/* Public Route (Login) */}
+      <Route path="/" element={<AuthPage/>} />
+      <Route path="/signup" element={<SignUp/>} />
+
+        {/* Admin Route (Login) */}
         <Route path="/admin" element={<LoginPage />} />
-        {/* Protected Routes */}
+        {/* Admin Protected Routes */}
         <Route element={<ProtectedRoute />}>
           <Route path="/admin/dashboard/sales" element={<Sales />} />
           <Route path="/admin/dashboard/caterer" element={<Caterer />} />
