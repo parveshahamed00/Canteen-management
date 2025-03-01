@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+
 export default function SignUp() {
   const [name, setName] = useState("");
   const [department, setDepartment] = useState("");
@@ -17,30 +18,31 @@ export default function SignUp() {
       toast.error("All fields are required");
       return;
     }
+    console.log(name,department,identifier,isStudent);
+    
+    // try {
+    //   // Send registration request to the backend
+    //   const response = await axios.post("http://localhost:3000/register", {
+    //     name,
+    //     department,
+    //     identifier,
+    //     role: isStudent ? "student" : "staff", // Include the role
+    //   });
 
-    try {
-      // Send registration request to the backend
-      const response = await axios.post("http://localhost:3000/register", {
-        name,
-        department,
-        identifier,
-        type: isStudent ? "student" : "staff",
-      });
-
-      // Check if registration was successful
-      if (response.data.success) {
-        toast.success("Registration successful");
-        // Reset form fields
-        setName("");
-        setDepartment("");
-        setIdentifier("");
-      } else {
-        toast.error(response.data.message || "Registration failed");
-      }
-    } catch (error) {
-      // Handle network or server errors
-      toast.error(error.response?.data?.message || "Registration failed");
-    }
+    //   // Check if registration was successful
+    //   if (response.data.success) {
+    //     toast.success("Registration successful");
+    //     // Reset form fields
+    //     setName("");
+    //     setDepartment("");
+    //     setIdentifier("");
+    //   } else {
+    //     toast.error(response.data.message || "Registration failed");
+    //   }
+    // } catch (error) {
+    //   // Handle network or server errors
+    //   toast.error(error.response?.data?.message || "Registration failed");
+    // }
   };
 
   return (
