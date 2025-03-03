@@ -29,6 +29,8 @@ export default function LoginPage() {
       // Check if login was successful
       if (response.data.success) {
         localStorage.setItem("token", response.data.token); // Store the token
+        localStorage.setItem("role", response.data.role);  // Store the role
+
         toast.success("Login successful");
         navigate("/admin/dashboard/sales"); // Redirect to the dashboard
       } else {

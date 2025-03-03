@@ -16,7 +16,7 @@ const CatererList = () => {
         console.log('Fetched caterers:', response.data.data); // Log the response
         setCaterers(response.data.data);
       } catch (error) {
-        toast.error("Failed to fetch caterers.");
+        toast.error("No caterer found ⚠️");
         console.error("Error fetching caterers:", error);
       }
     };

@@ -9,8 +9,8 @@ import ProtectedRoute from "./components/Admin/ProtectedRoute"; // Import the Pr
 import AddCaterer from "./components/Admin/AddCaterer";
 import CatererList from "./components/Admin/CatererList";
 import AddFoodItem from "./components/Admin/AddFoodItem";
-import AuthPage from "./components/AuthPage";
-import SignUp from "./components/SignUp";
+import AuthPage from "./components/User/AuthPage";
+import SignUp from "./components/User/SignUp";
 function App() {
   // TODO: create user login uing rollnumber and password
   return (

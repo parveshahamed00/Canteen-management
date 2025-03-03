@@ -6,9 +6,12 @@ import { Link, useNavigate } from "react-router-dom";
 const Sidebar = () => {
   const navigate = useNavigate();
   const handleLogout = () => {
+    
     // Clear the token from local storage
     localStorage.removeItem("token");
+    localStorage.removeItem("role");
     // Redirect to the login page
+
     navigate("/admin");
   };
   return (
