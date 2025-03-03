@@ -11,14 +11,16 @@ import CatererList from "./components/Admin/CatererList";
 import AddFoodItem from "./components/Admin/AddFoodItem";
 import AuthPage from "./components/User/AuthPage";
 import SignUp from "./components/User/SignUp";
+import Login from "./components/User/Login";
 function App() {
   // TODO: create user login uing rollnumber and password
   return (
     <div>
       <Routes>
-      <Route path="/" element={<AuthPage/>} />
-      <Route path="/signup" element={<SignUp/>} />
-
+        <Route path="/" element={<AuthPage />} />
+        {/* user */}
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
         {/* Admin Route (Login) */}
         <Route path="/admin" element={<LoginPage />} />
         {/* Admin Protected Routes */}
@@ -27,10 +29,7 @@ function App() {
           <Route path="/admin/dashboard/caterer" element={<Caterer />} />
           <Route path="/admin/dashboard/items" element={<AddFoodItem />} />
           <Route path="/admin/dashboard/addCaterer" element={<AddCaterer />} />
-          <Route
-            path="/admin/dashboard/catererList"
-            element={<CatererList></CatererList>}
-          />
+          <Route path="/admin/dashboard/catererList" element={<CatererList />} />
         </Route>
         {/* 404 Error Page */}
         <Route path="*" element={<Error404 />} />
