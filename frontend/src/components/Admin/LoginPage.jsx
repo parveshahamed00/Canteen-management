@@ -9,23 +9,19 @@ export default function LoginPage() {
   const [adminId, setAdminId] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     // Check if fields are empty
     if (adminId === "" || password === "") {
       toast.error("Both fields are required");
       return;
     }
-
     try {
       // Send login request to the backend
       const response = await axios.post("http://localhost:3000/admin", {
         AdminId: adminId,
         AdminPassword: password,
       });
-
       // Check if login was successful
       if (response.data.success) {
         localStorage.setItem("token", response.data.token); // Store the token

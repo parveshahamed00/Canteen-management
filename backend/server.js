@@ -7,7 +7,8 @@ const addCaterer = require("./routes/Admin/addCaterer");
 const catererList = require("./routes/Admin/catererList");
 const deleteCaterer = require("./routes/Admin/deleteCaterer");
 const addFoodItems = require("./routes/Admin/addFoodItems");
-const signUp = require("./routes/signUp");
+const signUp = require("./routes/User/signUp");
+const login=require("./routes/User/login")
 const app = express();
 const port = 3000;
 // Middleware
@@ -21,6 +22,8 @@ app.use("/admin/dashboard/catererList", catererList); // Admin seeing caterer li
 app.use("/admin/dashboard/catererList", deleteCaterer);
 app.use("/admin/dashboard/foodItems", addFoodItems);
 app.use("/signup", signUp); // creating Users
+app.use("/login", login); // user Login
+
 // Database connection
 dbConnection.connect((err) => {
   if (err) {

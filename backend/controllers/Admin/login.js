@@ -9,8 +9,8 @@ console.log( AdminId, AdminPassword);
         if (err) throw err;
 
         if (result.length > 0) {
-            const token = jwt.sign({ AdminId }, "samosa", { expiresIn: '1h' });
-            res.json({ success: true, token });
+            const token = jwt.sign({ AdminId: 'sac2025', role: 'admin' }, "samosa", { expiresIn: '1h' });
+            res.json({ success: true, token,role: 'admin' });
         } else {
             res.status(401).json({ success: false, message: 'Invalid credentials' });
         }

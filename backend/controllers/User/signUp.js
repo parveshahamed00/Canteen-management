@@ -1,4 +1,4 @@
-const db = require("../db");
+const db = require("../../db");
 const signUp = (req, res) => {
   const { name, department, identifier, role } = req.body;
   if (!name || !department || !identifier || !role) {
@@ -15,4 +15,4 @@ const signUp = (req, res) => {
     res.send({ success: true, message: "Registration successful" });
   });
 };
-module.exports={signUp}
+module.exports = { signUp };
