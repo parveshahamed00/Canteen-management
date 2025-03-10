@@ -1,10 +1,30 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import React, { useState,useEffect} from "react";
 import { FaSignOutAlt, FaUser, FaShoppingCart } from "react-icons/fa";
 
 const App = () => {
   const [quantities, setQuantities] = useState({});
   const username = "John Doe";
+const [foodsItems,setFoodItems]=useState([])
+  useEffect(() => {
+    const fetchCaterers = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:3000/homepage"
+        );
+        console.log('Fetched Food Items:', response.data.data); // Log the response
+        setFoodItems(response.data.data);
+      } catch (error) {
+        toast.error("No caterer found ⚠️");
+        console.error("Error fetching caterers:", error);
+      }
+    };
+
+    fetchCaterers();
+  }, []);
 
   const foodItems = [
     {
@@ -22,17 +42,17 @@ const App = () => {
     // Add more items as needed
   ];
 
-  const handleQuantityChange = (itemId, quantity) => {
-    setQuantities((prevQuantities) => ({
-      ...prevQuantities,
-      [itemId]: quantity,
-    }));
-  };
+//   const handleQuantityChange = (itemId, quantity) => {
+//     setQuantities((prevQuantities) => ({
+//       ...prevQuantities,
+//       [itemId]: quantity,
+//     }));
+//   };
 
-  const handleAddToCart = (itemId) => {
-    const quantity = quantities[itemId] || 1;
-    console.log(`Added ${quantity} of item ${itemId} to cart.`);
-  };
+//   const handleAddToCart = (itemId) => {
+//     const quantity = quantities[itemId] || 1;
+//     console.log(`Added ${quantity} of item ${itemId} to cart.`);
+//   };
 
   return (
     <div>
