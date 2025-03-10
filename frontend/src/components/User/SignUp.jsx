@@ -20,29 +20,29 @@ export default function SignUp() {
     }
     console.log(name,department,identifier,isStudent);
     
-    // try {
-    //   // Send registration request to the backend
-    //   const response = await axios.post("http://localhost:3000/register", {
-    //     name,
-    //     department,
-    //     identifier,
-    //     role: isStudent ? "student" : "staff", // Include the role
-    //   });
+    try {
+      // Send registration request to the backend
+      const response = await axios.post("http://localhost:3000/signup", {
+        name,
+        department,
+        identifier,
+        role: isStudent ? "student" : "staff", // Include the role
+      });
 
-    //   // Check if registration was successful
-    //   if (response.data.success) {
-    //     toast.success("Registration successful");
-    //     // Reset form fields
-    //     setName("");
-    //     setDepartment("");
-    //     setIdentifier("");
-    //   } else {
-    //     toast.error(response.data.message || "Registration failed");
-    //   }
-    // } catch (error) {
-    //   // Handle network or server errors
-    //   toast.error(error.response?.data?.message || "Registration failed");
-    // }
+      // Check if registration was successful
+      if (response.data.success) {
+        toast.success("Registration successful");
+        // Reset form fields
+        setName("");
+        setDepartment("");
+        setIdentifier("");
+      } else {
+        toast.error(response.data.message || "Registration failed");
+      }
+    } catch (error) {
+      // Handle network or server errors
+      toast.error(error.response?.data?.message || "Registration failed");
+    }
   };
 
   return (

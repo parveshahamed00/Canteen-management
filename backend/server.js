@@ -9,13 +9,16 @@ const deleteCaterer = require("./routes/Admin/deleteCaterer");
 const addFoodItems = require("./routes/Admin/addFoodItems");
 const signUp = require("./routes/User/signUp");
 const login=require("./routes/User/login")
+const homePage=require("./routes/User/homepage")
 const app = express();
 const port = 3000;
+
 // Middleware
 app.use(cors()); // Allow all origins
 app.use(express.json()); // Parse JSON requests
 app.use(express.static(path.join(__dirname, "public"))); // Serve static files
 // Routes
+
 app.use("/admin", adminAuth); // Admin authentication routes
 app.use("/admin/dashboard/addCaterer", addCaterer); // Admin Adding caterer
 app.use("/admin/dashboard/catererList", catererList); // Admin seeing caterer list
@@ -23,7 +26,7 @@ app.use("/admin/dashboard/catererList", deleteCaterer);
 app.use("/admin/dashboard/foodItems", addFoodItems);
 app.use("/signup", signUp); // creating Users
 app.use("/login", login); // user Login
-
+app.use("/homepage",homePage)
 // Database connection
 dbConnection.connect((err) => {
   if (err) {

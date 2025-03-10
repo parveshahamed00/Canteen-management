@@ -12,6 +12,7 @@ import AddFoodItem from "./components/Admin/AddFoodItem";
 import AuthPage from "./components/User/AuthPage";
 import SignUp from "./components/User/SignUp";
 import Login from "./components/User/Login";
+import HomePage from "./components/User/HomePage";
 function App() {
   // TODO: create user login uing rollnumber and password
   return (
@@ -21,6 +22,8 @@ function App() {
         {/* user */}
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/home" element={<HomePage/>} />
+        
         {/* Admin Route (Login) */}
         <Route path="/admin" element={<LoginPage />} />
         {/* Admin Protected Routes */}

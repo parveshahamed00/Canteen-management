@@ -32,6 +32,7 @@ export default function Login() {
         localStorage.setItem("role", response.data.role);  // Store the role
 
         toast.success("Login successful");
+        navigate("/home")
         // navigate(response.data.role === 'user' ? "/user/dashboard" : "/admin/dashboard"); // Redirect based on role
       } else {
         toast.error( "Login failed"); 
