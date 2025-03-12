@@ -4,8 +4,11 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import React, { useState,useEffect} from "react";
 import { FaSignOutAlt, FaUser, FaShoppingCart } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
 
 const App = () => {
+    const navigate = useNavigate();
+  
   const [quantities, setQuantities] = useState({});
   const username = "John Doe";
 const [foodsItems,setFoodItems]=useState([])
@@ -42,18 +45,26 @@ const [foodsItems,setFoodItems]=useState([])
     // Add more items as needed
   ];
 
-//   const handleQuantityChange = (itemId, quantity) => {
-//     setQuantities((prevQuantities) => ({
-//       ...prevQuantities,
-//       [itemId]: quantity,
-//     }));
-//   };
+  const handleQuantityChange = (itemId, quantity) => {
+    setQuantities((prevQuantities) => ({
+      ...prevQuantities,
+      [itemId]: quantity,
+    }));
+  };
 
-//   const handleAddToCart = (itemId) => {
-//     const quantity = quantities[itemId] || 1;
-//     console.log(`Added ${quantity} of item ${itemId} to cart.`);
-//   };
+  const handleAddToCart = (itemId) => {
+    const quantity = quantities[itemId] || 1;
+    console.log(`Added ${quantity} of item ${itemId} to cart.`);
+  };
+  const handleLogout = () => {
+    
+    // Clear the token from local storage
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    // Redirect to the login page
 
+    navigate("/login");
+  };
   return (
     <div>
       <nav className="flex justify-between items-center p-4  bg-green-600">
@@ -65,7 +76,7 @@ const [foodsItems,setFoodItems]=useState([])
           <FaUser></FaUser>
           <span>{username}</span>
           <FaShoppingCart></FaShoppingCart>
-          <FaSignOutAlt></FaSignOutAlt>
+        <button onClick={handleLogout}>  <FaSignOutAlt></FaSignOutAlt></button>
         </div>
       </nav>
 
