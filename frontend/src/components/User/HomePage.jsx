@@ -2,23 +2,22 @@
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import React, { useState,useEffect} from "react";
+import React, { useState, useEffect,useContext } from "react";
 import { FaSignOutAlt, FaUser, FaShoppingCart } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
+import { AppContext } from "../../AppContext";
 
 const App = () => {
-    const navigate = useNavigate();
-  
+  const navigate = useNavigate();
+  const { user } = useContext(AppContext);
+  const backendURL = "http://localhost:3000";
   const [quantities, setQuantities] = useState({});
-  const username = "John Doe";
-const [foodsItems,setFoodItems]=useState([])
+  const [foodItems, setFoodItems] = useState([]);
   useEffect(() => {
     const fetchCaterers = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:3000/homepage"
-        );
-        console.log('Fetched Food Items:', response.data.data); // Log the response
+        const response = await axios.get("http://localhost:3000/homepage");
+        console.log("Fetched Food Items:", response.data.data); // Log the response
         setFoodItems(response.data.data);
       } catch (error) {
         toast.error("No caterer found ⚠️");
@@ -28,22 +27,6 @@ const [foodsItems,setFoodItems]=useState([])
 
     fetchCaterers();
   }, []);
-
-  const foodItems = [
-    {
-      id: 1,
-      name: "Pizza",
-      description: "Delicious cheese pizza",
-      image: "pizza.jpg",
-    },
-    {
-      id: 2,
-      name: "Burger",
-      description: "Juicy burger with fries",
-      image: "burger.jpg",
-    },
-    // Add more items as needed
-  ];
 
   const handleQuantityChange = (itemId, quantity) => {
     setQuantities((prevQuantities) => ({
@@ -57,7 +40,6 @@ const [foodsItems,setFoodItems]=useState([])
     console.log(`Added ${quantity} of item ${itemId} to cart.`);
   };
   const handleLogout = () => {
-    
     // Clear the token from local storage
     localStorage.removeItem("token");
     localStorage.removeItem("role");
@@ -74,9 +56,12 @@ const [foodsItems,setFoodItems]=useState([])
         </div>
         <div className="flex items-center space-x-4">
           <FaUser></FaUser>
-          <span>{username}</span>
+          <span>{user.name}</span>
           <FaShoppingCart></FaShoppingCart>
-        <button onClick={handleLogout}>  <FaSignOutAlt></FaSignOutAlt></button>
+          <button onClick={handleLogout}>
+            {" "}
+            <FaSignOutAlt></FaSignOutAlt>
+          </button>
         </div>
       </nav>
 
@@ -85,12 +70,23 @@ const [foodsItems,setFoodItems]=useState([])
           {foodItems.map((item) => (
             <div key={item.id} className="border rounded-lg p-4 shadow-md">
               <img
-                src={item.image}
+                src={`${backendURL}/uploads/${item.image_path}`}
                 alt={item.name}
                 className="w-full h-40 object-cover rounded-md"
               />
+
               <h5 className="text-xl font-semibold mt-2">
-                {item.name} <span style={{ color: "green",fontSize:"15px", marginLeft:"6px",fontStyle:"italic"}}>₹ 50</span>
+                {item.name}{" "}
+                <span
+                  style={{
+                    color: "green",
+                    fontSize: "15px",
+                    marginLeft: "6px",
+                    fontStyle: "italic",
+                  }}
+                >
+                  ₹ 50
+                </span>
               </h5>
               <div className="flex justify-between items-center mt-4">
                 <div>

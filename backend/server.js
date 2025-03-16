@@ -17,6 +17,9 @@ const port = 3000;
 app.use(cors()); // Allow all origins
 app.use(express.json()); // Parse JSON requests
 app.use(express.static(path.join(__dirname, "public"))); // Serve static files
+// serves the images frontend
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
 // Routes
 
 app.use("/admin", adminAuth); // Admin authentication routes
