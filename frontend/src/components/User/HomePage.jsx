@@ -9,7 +9,7 @@ import { AppContext } from "../../AppContext";
 
 const HomePage = () => {
   const navigate = useNavigate();
-  const { user, addToCart } = useContext(AppContext);
+  const { user, addToCart, cart } = useContext(AppContext);
   const backendURL = "http://localhost:3000";
   const [foodItems, setFoodItems] = useState([]);
   const [quantities, setQuantities] = useState({});
@@ -44,6 +44,9 @@ const HomePage = () => {
     navigate("/login");
   };
 
+  // Calculate total quantity of items in the cart
+  const totalCartQuantity = cart.reduce((total, item) => total + item.quantity, 0);
+
   return (
     <div>
       <ToastContainer /> {/* Ensure this is included */}
@@ -54,8 +57,13 @@ const HomePage = () => {
         <div className="flex items-center space-x-4">
           <FaUser />
           <span>{user?.name}</span>
-          <Link to="/cart">
-            <FaShoppingCart className="cursor-pointer text-orange-700 text-lg" />
+          <Link to="/cart" className="relative">
+            <FaShoppingCart className="cursor-pointer text-green-600 text-xl" />
+            {totalCartQuantity > 0 && (
+              <span className="absolute border-red-600 border-2 -top-3 -right-2 bg-transparent text-red-700 rounded-full w-5 h-5 flex items-center justify-center text-xs font-extrabold">
+                {totalCartQuantity}
+              </span>
+            )}
           </Link>
           <button onClick={handleLogout}>
             <FaSignOutAlt />

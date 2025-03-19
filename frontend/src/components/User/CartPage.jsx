@@ -14,9 +14,9 @@ const CartPage = () => {
   const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
 
   return (
-    <div className="container mx-auto my-16 p-5 bg-white">
+    <div className="container border-red-500 border-x-2 mx-auto  my-16 p-5 bg-white">
         <div><img src="logo.png" alt="logo" className="logo" /></div>
-      <h2 className="text-2xl font-bold mb-4">Your Cart</h2>
+      <h2 className="text-2xl font-bold my-4">Your Cart :</h2>
       {cart.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (
@@ -28,7 +28,7 @@ const CartPage = () => {
                 <th className="p-2 border">Quantity</th>
                 <th className="p-2 border">Price</th>
                 <th className="p-2 border">Total</th>
-                <th className="p-2 border">Action</th>
+                <th className="p-2 border">Remove</th>
               </tr>
             </thead>
             <tbody>
