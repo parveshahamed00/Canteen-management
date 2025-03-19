@@ -11,6 +11,7 @@ import AuthPage from "./components/User/AuthPage";
 import SignUp from "./components/User/SignUp";
 import Login from "./components/User/Login";
 import HomePage from "./components/User/HomePage";
+import CartPage from "./components/User/CartPage";
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
         {/* User Routes */}
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/cart" element={<CartPage/>} />
+
 
         {/* Protected User Route */}
         <Route element={<UserProtectedRoute />}>
