@@ -7,7 +7,7 @@ import { FaSignOutAlt, FaUser, FaShoppingCart } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../../AppContext";
 
-const App = () => {
+const HomePage = () => {
   const navigate = useNavigate();
   const { user } = useContext(AppContext);
   const backendURL = "http://localhost:3000";
@@ -43,6 +43,8 @@ const App = () => {
     // Clear the token from local storage
     localStorage.removeItem("token");
     localStorage.removeItem("role");
+    localStorage.removeItem("loginCredentials");
+
     // Redirect to the login page
 
     navigate("/login");
@@ -116,4 +118,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default HomePage;
