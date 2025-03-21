@@ -12,12 +12,15 @@ import SignUp from "./components/User/SignUp";
 import Login from "./components/User/Login";
 import HomePage from "./components/User/HomePage";
 import CartPage from "./components/User/CartPage";
+import LandingPage from "./LandingPage";
 
 function App() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<AuthPage />} />
+        <Route path="/" element={<LandingPage/>} />
+
+        <Route path="/auth" element={<AuthPage />} />
 
         {/* User Routes */}
         <Route path="/signup" element={<SignUp />} />
