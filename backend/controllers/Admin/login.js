@@ -12,6 +12,8 @@ console.log( AdminId, AdminPassword);
             const token = jwt.sign({ AdminId: 'sac2025', role: 'admin' }, "samosa", { expiresIn: '1h' });
             res.json({ success: true, token,role: 'admin' });
         } else {
+            console.log("invalid");
+            
             res.status(401).json({ success: false, message: 'Invalid credentials' });
         }
     });

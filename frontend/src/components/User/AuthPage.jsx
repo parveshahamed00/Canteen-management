@@ -10,7 +10,7 @@ const AuthPage = () => {
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <h1 className="auth-title">Welcome to SAC Snacks Wallet</h1>
+        <h1 className="auth-title">Welcome to SAC Snack Vault</h1>
         <div className="auth-buttons">
           <Link to="/login">
             <button className="auth-button login-button">

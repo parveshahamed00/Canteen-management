@@ -3,7 +3,7 @@ const mysql = require('mysql2');
 host:"localhost",
 database:"sac_snacks_wallet",
 user:"root",
-password:"parvesh7"
+password:"1234"
 
 })
 module.exports=dbConnection
