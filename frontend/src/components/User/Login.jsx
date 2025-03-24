@@ -1,19 +1,20 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { FaUserGraduate, FaIdBadge } from "react-icons/fa";
-import "./login.css"
+import "./login.css";
+import { AppContext } from "../../AppContext";
 export default function Login() {
+  const { setUser } = useContext(AppContext);
+
   const [idOrRollNo, setIdOrRollNo] = useState("");
   const [role, setRole] = useState("student"); // Default to student
   const navigate = useNavigate();
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     // Check if field is empty
     if (idOrRollNo === "") {
       toast.error("Field is required");
@@ -23,18 +24,20 @@ export default function Login() {
     try {
       // Send login request to the backend
       const response = await axios.post("http://localhost:3000/login", {
-        idOrRollNo,role
+        idOrRollNo,
+        role,
       });
 
       // Check if login was successful
       if (response.data.success) {
+        setUser({ name: response.data.name, id: response.data.id });
         localStorage.setItem("token", response.data.token); // Store the token
-        localStorage.setItem("role", response.data.role);  // Store the role
-
+        localStorage.setItem("role", response.data.role); // Store the role
         toast.success("Login successful");
+        navigate("/home");
         // navigate(response.data.role === 'user' ? "/user/dashboard" : "/admin/dashboard"); // Redirect based on role
       } else {
-        toast.error( "Login failed"); 
+        toast.error("Login failed");
       }
     } catch (error) {
       // Handle network or server errors
@@ -72,7 +75,9 @@ export default function Login() {
                       name="idOrRollNo"
                       type="text"
                       className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-rose-600"
-                      placeholder={role === "student" ? "Roll Number" : "Staff ID"}
+                      placeholder={
+                        role === "student" ? "Roll Number" : "Staff ID"
+                      }
                       value={idOrRollNo}
                       onChange={(e) => setIdOrRollNo(e.target.value)}
                     />

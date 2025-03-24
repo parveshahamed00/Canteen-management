@@ -18,7 +18,7 @@ const login = (req, res) => {
       const token = jwt.sign({ idOrRollNo: idOrRollNo, role: "user" }, "sac", {
         expiresIn: "1h",
       });
-      return res.json({ success: true, token, role: "user" });
+      return res.json({ success: true, token, role: "user",name:result[0].name,id:result[0].identifier });
     } else {
       // User not found
       return res
